@@ -201,3 +201,13 @@ cloudflared --version
 
 5.3. Configure the SSH client
 
+```text
+Host dev-ssh
+    HostName ssh-dev1.mini-homelab.site
+    User deploy
+    IdentityFile ~/.ssh/id_ed25519_work
+    IdentitiesOnly yes
+    ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h
+    ServerAliveInterval 60
+    ServerAliveCountMax 10
+```
