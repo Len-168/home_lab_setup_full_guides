@@ -172,7 +172,18 @@ This message shows that your installation appears to be working correctly.
 Add your user to the `docker` group:
 
 ```bash
+# 1. Create the docker group (may already exist — that's fine)
+sudo groupadd docker
+
+# 2. Add yourself to it
 sudo usermod -aG docker $USER
+
+# 3. Apply the change: log out and back in (or reboot if in a VM).
+#    For the current terminal only, you can use:
+newgrp docker
+
+# 4. Test
+docker run hello-world
 ```
 
 Group changes only apply when you log in again. Log out (`exit`) and SSH back in, then check:
